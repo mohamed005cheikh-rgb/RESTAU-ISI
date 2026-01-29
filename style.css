@@ -1,0 +1,792 @@
+/* إعدادات عامة */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', 'El Messiri', sans-serif;
+    color: #333;
+    overflow-x: hidden;
+    background: #0a0a1a;
+}
+
+/* خلفية الفيديو */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+#background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    filter: brightness(0.5) saturate(1.5) contrast(1.2);
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(10, 10, 26, 0.9) 0%, rgba(30, 30, 60, 0.85) 100%);
+}
+
+/* الحاوية الرئيسية */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* علامة ISI Restaurant مع تأثير النيون */
+.brand-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 30px;
+    flex-wrap: wrap;
+    animation: fadeInDown 1.5s ease;
+}
+
+.brand {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.logo-neon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    font-family: 'Great Vibes', 'Dancing Script', cursive;
+    font-weight: 700;
+}
+
+.neon-text {
+    font-size: 5.5rem;
+    color: #fff;
+    text-shadow: 
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px #ff00ff,
+        0 0 82px #ff00ff,
+        0 0 92px #ff00ff,
+        0 0 102px #ff00ff,
+        0 0 151px #ff00ff;
+    animation: neon-pulse 1.5s ease-in-out infinite alternate;
+    letter-spacing: 2px;
+}
+
+.restaurant-text {
+    font-size: 2.2rem;
+    color: #fff;
+    text-shadow: 
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 15px #00ffff,
+        0 0 25px #00ffff;
+    font-family: 'Playfair Display', serif;
+    margin-top: -10px;
+    letter-spacing: 1px;
+}
+
+.tagline-neon {
+    font-size: 1.5rem;
+    color: #fff;
+    text-shadow: 
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 15px #00ff00;
+    font-weight: 600;
+    animation: neon-green 2s ease-in-out infinite alternate;
+    margin-top: 10px;
+}
+
+/* الإيموجيات الدوارة */
+.rotating-emojis {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 80px;
+}
+
+.rotating-emoji {
+    font-size: 2.5rem;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.7));
+}
+
+.chef-hat {
+    animation: rotate-clockwise 8s linear infinite;
+}
+
+.plate {
+    animation: rotate-counterclockwise 6s linear infinite;
+}
+
+.utensils {
+    display: flex;
+    gap: 5px;
+}
+
+.utensil {
+    font-size: 1.8rem;
+}
+
+.fork {
+    animation: rotate-clockwise 4s linear infinite;
+}
+
+.knife {
+    animation: rotate-counterclockwise 3s linear infinite;
+}
+
+/* الهيدر */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-top: 20px;
+    animation: fadeInDown 1s ease;
+}
+
+.tagline {
+    font-size: 1.3rem;
+    color: #e0f7fa;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(224, 247, 250, 0.7);
+}
+
+/* شبكة الأقسام */
+.sections-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+/* بطاقات الأقسام */
+.section-card {
+    background: rgba(255, 255, 255, 0.93);
+    border-radius: 20px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    border: 3px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
+    background-size: 400% 100%;
+    animation: gradientMove 3s ease infinite;
+}
+
+.section-card:hover {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.section-icon {
+    font-size: 4rem;
+    margin-bottom: 15px;
+    transition: transform 0.5s ease;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.2));
+}
+
+.section-card:hover .section-icon {
+    transform: scale(1.2) rotate(10deg);
+}
+
+.section-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #1a2c1f;
+    font-weight: 700;
+}
+
+/* التخصيص لكل قسم */
+.breakfast {
+    border-color: #ffb347;
+}
+
+.breakfast:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 179, 71, 0.15));
+}
+
+.lunch {
+    border-color: #4CAF50;
+}
+
+.lunch:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(76, 175, 80, 0.15));
+}
+
+.dinner {
+    border-color: #2196F3;
+}
+
+.dinner:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(33, 150, 243, 0.15));
+}
+
+.desserts {
+    border-color: #E91E63;
+}
+
+.desserts:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(233, 30, 99, 0.15));
+}
+
+.snacks {
+    border-color: #9C27B0;
+}
+
+.snacks:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(156, 39, 176, 0.15));
+}
+
+.drinks {
+    border-color: #00BCD4;
+}
+
+.drinks:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(0, 188, 212, 0.15));
+}
+
+/* القوائم المنسدلة */
+.dropdown-container {
+    margin-top: 10px;
+}
+
+.meal-select {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 12px;
+    border: 2px solid #ddd;
+    font-family: 'Cairo', sans-serif;
+    font-size: 1.1rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    outline: none;
+}
+
+.meal-select:focus {
+    border-color: #ff00ff;
+    box-shadow: 0 0 0 3px rgba(255, 0, 255, 0.2);
+}
+
+/* ملخص الطلب */
+.order-summary {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    animation: fadeInUp 1s ease;
+}
+
+.order-summary h3 {
+    font-size: 1.8rem;
+    color: #1a2c1f;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#selected-meals {
+    min-height: 100px;
+    background: rgba(248, 249, 250, 0.8);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 2px dashed #ced4da;
+}
+
+.meal-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    animation: slideInRight 0.5s ease;
+}
+
+.meal-item:last-child {
+    margin-bottom: 0;
+}
+
+.meal-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.meal-emoji {
+    font-size: 1.5rem;
+}
+
+.meal-name {
+    font-weight: 600;
+    color: #333;
+}
+
+.meal-section {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.remove-meal {
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.remove-meal:hover {
+    background: #ff5252;
+    transform: scale(1.1);
+}
+
+.order-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.send-btn, .clear-btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 200px;
+}
+
+.send-btn {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+}
+
+.send-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.6);
+    background: linear-gradient(135deg, #1ebe5c, #0d7a6e);
+}
+
+.clear-btn {
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    color: #333;
+    box-shadow: 0 5px 15px rgba(255, 154, 158, 0.4);
+}
+
+.clear-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 154, 158, 0.6);
+    background: linear-gradient(135deg, #ff7b81, #f8b9a9);
+}
+
+/* الفوتر */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+    background: rgba(10, 10, 26, 0.8);
+    border-radius: 15px;
+    margin-top: 20px;
+    border: 1px solid rgba(255, 0, 255, 0.3);
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.2);
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.developers {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #a8e6cf;
+    text-shadow: 0 0 5px rgba(168, 230, 207, 0.7);
+}
+
+.copyright {
+    font-size: 1rem;
+    color: #e0f7fa;
+    text-shadow: 0 0 5px rgba(224, 247, 250, 0.7);
+}
+
+.footer-note {
+    font-size: 0.9rem;
+    color: #b2ebf2;
+    margin-top: 10px;
+}
+
+/* نافذة التأكيد */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    animation: scaleIn 0.5s ease;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #777;
+    transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+    color: #333;
+}
+
+.modal-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.modal-content h3 {
+    font-size: 1.8rem;
+    color: #1a2c1f;
+    margin-bottom: 15px;
+}
+
+.modal-content p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.modal-actions button {
+    padding: 12px 30px;
+    background: #ff00ff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+}
+
+.modal-actions button:hover {
+    background: #cc00cc;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.7);
+}
+
+/* رسالة عندما لا توجد وجبات */
+.empty-order {
+    text-align: center;
+    padding: 30px;
+    color: #6c757d;
+    font-size: 1.1rem;
+}
+
+.empty-order i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #adb5bd;
+}
+
+/* التجاوب مع الشاشات */
+@media (max-width: 992px) {
+    .brand-container {
+        gap: 15px;
+    }
+    
+    .neon-text {
+        font-size: 4.5rem;
+    }
+    
+    .restaurant-text {
+        font-size: 1.8rem;
+    }
+    
+    .rotating-emojis {
+        width: 60px;
+    }
+    
+    .rotating-emoji {
+        font-size: 2rem;
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sections-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    
+    .neon-text {
+        font-size: 3.5rem;
+    }
+    
+    .restaurant-text {
+        font-size: 1.5rem;
+    }
+    
+    .tagline-neon {
+        font-size: 1.2rem;
+    }
+    
+    .rotating-emojis {
+        display: none; /* إخفاء الإيموجيات على الشاشات الصغيرة */
+    }
+    
+    .section-card {
+        padding: 20px;
+    }
+    
+    .section-icon {
+        font-size: 3rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .send-btn, .clear-btn {
+        min-width: 100%;
+    }
+    
+    .order-actions {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .sections-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .neon-text {
+        font-size: 2.8rem;
+    }
+    
+    .restaurant-text {
+        font-size: 1.2rem;
+    }
+    
+    .tagline {
+        font-size: 1.1rem;
+    }
+}
+
+/* الحركات والتحويلات */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* تأثيرات النيون */
+@keyframes neon-pulse {
+    0%, 100% {
+        text-shadow: 
+            0 0 7px #fff,
+            0 0 10px #fff,
+            0 0 21px #fff,
+            0 0 42px #ff00ff,
+            0 0 82px #ff00ff,
+            0 0 92px #ff00ff,
+            0 0 102px #ff00ff,
+            0 0 151px #ff00ff;
+    }
+    50% {
+        text-shadow: 
+            0 0 5px #fff,
+            0 0 8px #fff,
+            0 0 18px #fff,
+            0 0 35px #ff00ff,
+            0 0 65px #ff00ff,
+            0 0 75px #ff00ff,
+            0 0 85px #ff00ff,
+            0 0 125px #ff00ff;
+    }
+}
+
+@keyframes neon-green {
+    0%, 100% {
+        text-shadow: 
+            0 0 5px #fff,
+            0 0 10px #fff,
+            0 0 15px #00ff00;
+    }
+    50% {
+        text-shadow: 
+            0 0 3px #fff,
+            0 0 7px #fff,
+            0 0 10px #00ff00;
+    }
+}
+
+/* حركات الدوران */
+@keyframes rotate-clockwise {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate-counterclockwise {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+/* تحسينات للشريط المنسدل */
+.meal-select option {
+    padding: 10px;
+    font-size: 1rem;
+}

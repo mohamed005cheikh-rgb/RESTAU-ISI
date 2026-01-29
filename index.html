@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISI Restaurant - مطعم إيسي</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&family=Cairo:wght@400;600;700&family=El+Messiri:wght@400;600;700&family=Great+Vibes&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- الفيديو كخلفية -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline id="background-video">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-healthy-food-on-a-white-background-5092-large.mp4" type="video/mp4">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-healthy-food-on-a-white-background-5092-large.webm" type="video/webm">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <!-- المحتوى الرئيسي -->
+    <div class="container">
+        <header>
+            <!-- العلامة التجارية مع تأثير النيون والإيموجيات الدوارة -->
+            <div class="brand-container">
+                <!-- الإيموجيات الدوارة على اليسار -->
+                <div class="rotating-emojis left">
+                    <div class="rotating-emoji chef-hat">👨‍🍳</div>
+                    <div class="rotating-emoji plate">🍽️</div>
+                    <div class="rotating-emoji utensils">
+                        <span class="utensil fork">🍴</span>
+                        <span class="utensil knife">🔪</span>
+                    </div>
+                </div>
+                
+                <!-- العلامة التجارية -->
+                <div class="brand">
+                    <h1 class="logo-neon">
+                        <span class="neon-text">ISI</span>
+                        <span class="restaurant-text">Restaurant</span>
+                    </h1>
+                    <p class="tagline-neon">🍽️ تجربة طعام استثنائية 🍽️</p>
+                </div>
+                
+                <!-- الإيموجيات الدوارة على اليمين -->
+                <div class="rotating-emojis right">
+                    <div class="rotating-emoji chef-hat">👨‍🍳</div>
+                    <div class="rotating-emoji plate">🍽️</div>
+                    <div class="rotating-emoji utensils">
+                        <span class="utensil fork">🍴</span>
+                        <span class="utensil knife">🔪</span>
+                    </div>
+                </div>
+            </div>
+            <p class="tagline">تناول طعامًا صحيًا .. عش حياةً سعيدة</p>
+        </header>
+
+        <!-- الأقسام الرئيسية -->
+        <main class="sections-container">
+            <div class="sections-grid">
+                <!-- قسم الفطور -->
+                <div class="section-card breakfast" data-section="breakfast">
+                    <div class="section-icon">🥐</div>
+                    <h2 class="section-title">الفطور</h2>
+                    <div class="dropdown-container">
+                        <select class="meal-select" id="breakfast-select">
+                            <option value="">اختر وجبتك</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- قسم الغداء -->
+                <div class="section-card lunch" data-section="lunch">
+                    <div class="section-icon">🍛</div>
+                    <h2 class="section-title">الغداء</h2>
+                    <div class="dropdown-container">
+                        <select class="meal-select" id="lunch-select">
+                            <option value="">اختر وجبتك</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- قسم العشاء -->
+                <div class="section-card dinner" data-section="dinner">
+                    <div class="section-icon">🍲</div>
+                    <h2 class="section-title">العشاء</h2>
+                    <div class="dropdown-container">
+                        <select class="meal-select" id="dinner-select">
+                            <option value="">اختر وجبتك</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- قسم الحلويات -->
+                <div class="section-card desserts" data-section="desserts">
+                    <div class="section-icon">🍰</div>
+                    <h2 class="section-title">الحلويات</h2>
+                    <div class="dropdown-container">
+                        <select class="meal-select" id="desserts-select">
+                            <option value="">اختر وجبتك</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- قسم الوجبات الخفيفة -->
+                <div class="section-card snacks" data-section="snacks">
+                    <div class="section-icon">🥗</div>
+                    <h2 class="section-title">وجبات خفيفة</h2>
+                    <div class="dropdown-container">
+                        <select class="meal-select" id="snacks-select">
+                            <option value="">اختر وجبتك</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- قسم المشروبات الصحية -->
+                <div class="section-card drinks" data-section="drinks">
+                    <div class="section-icon">🥤</div>
+                    <h2 class="section-title">مشروبات صحية</h2>
+                    <div class="dropdown-container">
+                        <select class="meal-select" id="drinks-select">
+                            <option value="">اختر وجبتك</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- قسم معلومات الطلب -->
+        <div class="order-summary">
+            <h3><i class="fas fa-shopping-cart"></i> طلباتك</h3>
+            <div id="selected-meals"></div>
+            <div class="order-actions">
+                <button id="send-order" class="send-btn">
+                    <i class="fab fa-whatsapp"></i> إرسال الطلب عبر واتساب
+                </button>
+                <button id="clear-order" class="clear-btn">
+                    <i class="fas fa-trash"></i> مسح الطلبات
+                </button>
+            </div>
+        </div>
+
+        <!-- الفوتر -->
+        <footer>
+            <div class="footer-content">
+                <p class="developers">brahim Développeurs :vadim</p>
+                <p class="copyright">Copyright: HMK</p>
+                <p class="footer-note">🍏 جميع الوجبات محضرة بعناية باستخدام مكونات طازجة وصحية 🥦</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- نافذة التأكيد -->
+    <div id="confirmation-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-icon">✅</div>
+            <h3>تم إرسال طلبك بنجاح!</h3>
+            <p>سيتم تحويلك إلى تطبيق واتساب لإكمال العملية.</p>
+            <div class="modal-actions">
+                <button id="confirm-modal-btn">حسنًا</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
